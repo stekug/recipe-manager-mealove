@@ -58,11 +58,13 @@ const StyledWrapper = styled.li`
 
 const StyledImage = styled(Image)`
   object-fit: cover;
-  transform: scale(1.01);
+  transform: scale(1.02);
   &:hover {
     transform: scale(1.12);
   }
   transition: all 0.3s ease;
+  mask-image: linear-gradient(to top, transparent 0%, black 30%);
+  -webkit-mask-image: linear-gradient(to top, transparent 0%, black 30%);
 `;
 
 const ImageWrapper = styled.div`
@@ -74,7 +76,6 @@ const ImageWrapper = styled.div`
 `;
 
 const StyledRecipePreview = styled.div`
-  background-color: grey;
   width: 150px;
   height: 150px;
   border-radius: var(--radius-m);
@@ -121,6 +122,5 @@ const StyledRecipeTitleWrapper = styled.div<StyledRecipeTitleProps>`
   border-bottom-left-radius: var(--radius-m);
   border-bottom-right-radius: var(--radius-m);
   width: 100%;
-  height: 30%;
-  backdrop-filter: blur(2px);
+  min-height: 30%;
 `;
