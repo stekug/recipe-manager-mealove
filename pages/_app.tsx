@@ -4,7 +4,6 @@ import Layout from '@/components/Layout';
 import type { AppProps } from 'next/app';
 import { HandleToggleFavoriteFunction, Recipe } from '@/types';
 import useSWR, { SWRConfig } from 'swr';
-import IsLoading from '@/components/IsLoading';
 import { SessionProvider } from 'next-auth/react';
 
 const fetcher = (...args: [RequestInfo, RequestInit?]): Promise<Recipe[]> =>
@@ -21,7 +20,6 @@ export default function App({
   >('favoriteRecipesList', { defaultValue: [] });
 
   if (error) return <div>failed to load</div>;
-  if (isLoading) return <IsLoading />;
   if (!recipes) return null;
 
   const handleToggleFavorite: HandleToggleFavoriteFunction = (id) => {
