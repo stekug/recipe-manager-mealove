@@ -7,6 +7,7 @@ import { Recipe } from '@/types';
 import { RecipeDetailsPageProps } from '@/types/RecipeDetails.types';
 import { useSession } from 'next-auth/react';
 import ArrowBack from '@/public/icons/ArrowBack.svg';
+import IsLoading from '@/components/IsLoading';
 
 import Button from '@/components/Button';
 
@@ -21,7 +22,7 @@ export default function RecipeDetailsPage({
   const recipe = recipes.find((recipe: Recipe) => recipe._id === id);
 
   if (error) return <div>failed to load</div>;
-  if (isLoading) return <div>loading...</div>;
+  if (isLoading) return <IsLoading />;
   if (!recipes) return null;
 
   if (!recipe || !recipe._id) return null;

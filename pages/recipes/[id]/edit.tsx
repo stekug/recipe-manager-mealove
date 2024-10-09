@@ -4,6 +4,7 @@ import useSWR from 'swr';
 import { Recipe } from '@/types';
 import { useSession } from 'next-auth/react';
 import Image from 'next/image';
+import IsLoading from '@/components/IsLoading';
 
 export default function RecipeEditPage() {
   const { data: recipes, error, isLoading, mutate } = useSWR('/api/recipes');
@@ -28,7 +29,7 @@ export default function RecipeEditPage() {
   const recipe = recipes.find((recipe: Recipe) => recipe._id === id);
 
   if (error) return <div>failed to load</div>;
-  if (isLoading) return <div>loading...</div>;
+  if (isLoading) return <IsLoading />;
   if (!recipes) return null;
 
   const userId = session?.user?.id ?? null;
